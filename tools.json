@@ -1,0 +1,97 @@
+[
+    {
+        "type": "function",
+        "function": {
+            "name": "lookup",
+            "description": "Query the document database for a specific term or concept. The query should ideally not be too long. You can set parameter 'k' to choose how many documents titles the system should return (default is 3). Call this when you want to know more about a specific concept. You can call this function multiple times for different concepts. You can use this overview to further get document contents.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "query": {
+                        "type": "string"
+                    },
+                    "k": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "query"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_top_n_documents",
+            "description": "Get the top n documents in terms of in-degree in the document database. You can set parameter 'n' to choose how many document titles are returned. You can use this overview to further get document contents. Call this when a general question is asked, for which you need a starting point to start branching out from.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "n": {
+                        "type": "integer"
+                    }
+                },
+                "required": [ ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_neighbours",
+            "description": "Get the neighbours of a specific document by supplying its ID. You can use this to get to know more about the context in which a theory or concept is embedded.  You can use this overview to further get document contents. Call this when you require further context to understand a specific concept or document.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "index": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "index"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "get_document_by_index",
+            "description": "Get the full content of a document given its ID. Call this when you have decided what documents are relevant for answering the question, so you can get their full contents.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "index": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "index"
+                ]
+            }
+        }
+    },
+    {
+        "type": "function",
+        "function": {
+            "name": "shortest_path",
+            "description": "Get the shortest path between two documents through their IDs. You can use this to get to know more about how two documents (and thus concepts) are related. You can use this overview to later get document contents. This is a powerful tool for comparisons, so always use it when a comparison is asked.",
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "start_index": {
+                        "type": "integer"
+                    },
+                    "end_index": {
+                        "type": "integer"
+                    }
+                },
+                "required": [
+                    "start_index",
+                    "end_index"
+                ]
+            }
+        }
+    }
+]
